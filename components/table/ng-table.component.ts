@@ -81,15 +81,14 @@ export class NgTableComponent {
   }
 
   public onCellClick(row:any, column:any, rowIndex:number, columnIndex:number):void {
-    let data: NgCellClickData = { row: row, column: column, rowIndex: rowIndex, columnIndex: columnIndex };
-    console.log(data);
+    let data: NgCellClickData<any> = {row, column, rowIndex, columnIndex };
     this.cellClicked.emit(data);
   }
 }
 
-export interface NgCellClickData {
-    row: any;
-    column: any;
-    rowIndex: number;
-    columnIndex: number;
+export interface NgCellClickData<T> {
+  row: T;
+  column: any;
+  rowIndex: number;
+  columnIndex: number;
 }

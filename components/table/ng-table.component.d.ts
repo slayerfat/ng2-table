@@ -11,8 +11,8 @@ export declare class NgTableComponent {
     getData(row: any, propertyName: string): string;
     onCellClick(row: any, column: any, rowIndex: number, columnIndex: number): void;
 }
-export interface NgCellClickData {
-    row: any;
+export interface NgCellClickData<T> {
+    row: T;
     column: any;
     rowIndex: number;
     columnIndex: number;

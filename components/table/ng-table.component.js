@@ -64,7 +64,6 @@ var NgTableComponent = (function () {
     };
     NgTableComponent.prototype.onCellClick = function (row, column, rowIndex, columnIndex) {
         var data = { row: row, column: column, rowIndex: rowIndex, columnIndex: columnIndex };
-        console.log(data);
         this.cellClicked.emit(data);
     };
     __decorate([
