@@ -26,7 +26,8 @@
     "test": "NODE_ENV=test ./node_modules/.bin/karma start",
     "preversion": "npm test",
     "version": "npm run flow.changelog && git add -A",
-    "postversion": "git push origin development && git push --tags"
+    "postversion": "git push origin development && git push --tags",
+    "postinstall": "npm run tsc"
   },
   "main": "ng2-table.js",
   "typings": "ng2-table.d.ts",
