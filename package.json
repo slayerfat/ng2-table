@@ -27,7 +27,7 @@
     "preversion": "npm test",
     "version": "npm run flow.changelog && git add -A",
     "postversion": "git push origin development && git push --tags",
-    "postinstall": "npm run tsc"
+    "postinstall": "tsc"
   },
   "main": "ng2-table.js",
   "typings": "ng2-table.d.ts",
