@@ -18,7 +18,9 @@ import {NgTableSortingDirective} from './ng-table-sorting.directive';
       </thead>
       <tbody>
       <tr *ngFor="let row of rows">
-        <td *ngFor="let column of columns">{{getData(row, column.name)}}</td>
+        <td *ngFor="let column of columns; let j = index" (click)="onCellClick(row, column, i, j)">
+          {{getData(row, column.name)}}
+        </td>
       </tr>
       </tbody>
     </table>
@@ -32,6 +34,7 @@ export class NgTableComponent {
 
   // Outputs (Events)
   @Output() public tableChanged:EventEmitter<any> = new EventEmitter();
+  @Output() public cellClicked: EventEmitter<any> = new EventEmitter();
 
   @Input()
   public set columns(values:Array<any>) {
@@ -76,4 +79,17 @@ export class NgTableComponent {
   public getData(row:any, propertyName:string):string {
     return propertyName.split('.').reduce((prev:any, curr:string) => prev[curr], row);
   }
+
+  public onCellClick(row:any, column:any, rowIndex:number, columnIndex:number):void {
+    let data: NgCellClickData = { row: row, column: column, rowIndex: rowIndex, columnIndex: columnIndex };
+    console.log(data);
+    this.cellClicked.emit(data);
+  }
+}
+
+export interface NgCellClickData {
+    row: any;
+    column: any;
+    rowIndex: number;
+    columnIndex: number;
 }
